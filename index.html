@@ -1,1058 +1,1332 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vicky Kumar - Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --neon-color: #0ef;
-            --bg-color: #0A192F;
-        }
-        
-        body {
-            background: var(--bg-color);
-            color: white;
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* Header with Navigation - Fixed */
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 1.5rem 5%;
-            background: var(--bg-color);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
-        }
-
-        .logo {
-            font-size: 2rem;
-            font-weight: 600;
-            color: white;
-            text-decoration: none;
-            margin-right: 2rem;
-        }
-
-        .navbar {
-            display: flex;
-            gap: 1.2rem;
-            flex-wrap: wrap;
-            justify-content: flex-end;
-            flex: 1;
-            min-width: 0;
-        }
-
-        .navbar a {
-            font-size: 1.1rem;
-            color: white;
-            text-decoration: none;
-            transition: 0.3s;
-            white-space: nowrap;
-            padding: 0.3rem 0.5rem;
-        }
-
-        .navbar a:hover {
-            color: var(--neon-color);
-            transform: translateY(-2px);
-        }
-        
-        /* Hero Section */
-        .hero {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 10% 5% 0;
-            min-height: 100vh;
-            box-sizing: border-box;
-        }
-        
-        .hero-content h3 {
-            font-size: 1.8rem;
-            margin-bottom: 0.8rem;
-            color: rgba(255, 255, 255, 0.8);
-        }
-        
-        .hero-content h1 {
-            font-size: 3.5rem;
-            margin-bottom: 0.8rem;
-            line-height: 1.2;
-        }
-        
-        .hero-content p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            width: 90%;
-            margin-bottom: 2rem;
-            color: rgba(255, 255, 255, 0.7);
-        }
-        
-        /* Social Media Icons */
-        .social-media {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .social-media a {
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            width: 38px;
-            height: 38px;
-            background: transparent;
-            border: 2px solid var(--neon-color);
-            border-radius: 50%;
-            font-size: 1rem;
-            color: var(--neon-color);
-            transition: 0.5s;
-        }
-        
-        .social-media a:hover {
-            background: var(--neon-color);
-            color: var(--bg-color);
-            box-shadow: 0 0 10px var(--neon-color);
-            transform: translateY(-3px);
-        }
-        
-        /* Circular Profile Photo */
-        .profile-img {
-            width: 320px;
-            height: 320px;
-            border-radius: 50%;
-            border: 4px solid var(--neon-color);
-            box-shadow: 0 0 20px var(--neon-color);
-            object-fit: cover;
-            transition: 0.5s;
-        }
-        
-        .profile-img:hover {
-            transform: scale(1.03);
-            box-shadow: 0 0 30px var(--neon-color);
-        }
-        
-        /* Neon Button */
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            background: var(--neon-color);
-            color: #1f242d;
-            font-weight: bold;
-            border-radius: 40px;
-            text-decoration: none;
-            box-shadow: 0 0 10px var(--neon-color);
-            transition: 0.3s;
-            font-size: 1rem;
-        }
-        
-        .btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 15px var(--neon-color);
-        }
-
-        /* About Section */
-        .about {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 8% 5%;
-            min-height: 100vh;
-            box-sizing: border-box;
-        }
-
-        .about-content {
-            max-width: 1200px;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 5rem;
-        }
-
-        .about-text {
-            flex: 1;
-            order: 2; /* Changed to move text to right */
-        }
-
-        .about-text h2 {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .about-text h3 {
-            font-size: 1.8rem;
-            color: var(--neon-color);
-            margin-bottom: 2rem;
-        }
-
-        .about-text p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 3rem;
-        }
-
-        .about-img {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            order: 1; /* Changed to move image to left */
-        }
-
-        /* Skills Section */
-        .skills {
-            padding: 8% 5%;
-            min-height: 100vh;
-            box-sizing: border-box;
-        }
-
-        .skills-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .skills h2 {
-            font-size: 3rem;
-            margin-bottom: 3rem;
-            text-align: center;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-        }
-
-        .skill-category {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 238, 255, 0.1);
-            transition: transform 0.3s;
-        }
-
-        .skill-category:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 0 20px rgba(0, 238, 255, 0.2);
-        }
-
-        .skill-category h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: var(--neon-color);
-        }
-
-        .skill-item {
-            margin-bottom: 1.5rem;
-        }
-
-        .skill-name {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.5rem;
-        }
-
-        .skill-name span {
-            font-size: 1.1rem;
-        }
-
-        .skill-bar {
-            height: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
-            overflow: hidden;
-        }
-
-        .skill-progress {
-            height: 100%;
-            background: var(--neon-color);
-            border-radius: 5px;
-            box-shadow: 0 0 10px var(--neon-color);
-        }
-
-        /* Experience Section */
-        .experience {
-            padding: 8% 5%;
-            min-height: 100vh;
-            box-sizing: border-box;
-        }
-
-        .experience-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .experience h2 {
-            font-size: 3rem;
-            margin-bottom: 3rem;
-            text-align: center;
-        }
-
-        .experience-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-            gap: 3rem;
-        }
-
-        .experience-box {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 2.5rem;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 238, 255, 0.1);
-            transition: transform 0.3s;
-            border-left: 3px solid var(--neon-color);
-        }
-
-        .experience-box:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 0 20px rgba(0, 238, 255, 0.2);
-        }
-
-        .experience-box h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: var(--neon-color);
-        }
-
-        .experience-box h4 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            color: white;
-        }
-
-        .experience-box .duration {
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 1.5rem;
-            display: block;
-        }
-
-        .experience-box p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        /* Projects Section */
-        .projects {
-            padding: 8% 5%;
-            min-height: 100vh;
-            box-sizing: border-box;
-        }
-
-        .projects-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .projects h2 {
-            font-size: 3rem;
-            margin-bottom: 3rem;
-            text-align: center;
-        }
-
-        .project-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 238, 255, 0.1);
-            overflow: hidden;
-            transition: transform 0.3s;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 0 20px rgba(0, 238, 255, 0.2);
-        }
-
-        .project-header {
-            background: rgba(0, 238, 255, 0.1);
-            padding: 2rem;
-            text-align: center;
-            border-bottom: 2px solid var(--neon-color);
-        }
-
-        .project-header h3 {
-            font-size: 2rem;
-            margin: 0;
-            color: var(--neon-color);
-        }
-
-        .project-header p {
-            font-size: 1.2rem;
-            margin: 0.5rem 0 0;
-            color: white;
-        }
-
-        .project-content {
-            padding: 2rem;
-            text-align: center;
-        }
-
-        .project-content h4 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: white;
-        }
-
-        .project-content .btn {
-            margin-top: 1.5rem;
-        }
-
-        /* Certificates Section */
-        .certificates {
-            padding: 8% 5%;
-            min-height: 100vh;
-            box-sizing: border-box;
-        }
-
-        .certificates-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .certificates h2 {
-            font-size: 3rem;
-            margin-bottom: 3rem;
-            text-align: center;
-        }
-
-        .certificates-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .certificate-box {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 238, 255, 0.1);
-            transition: transform 0.3s;
-            text-align: center;
-            border-top: 3px solid var(--neon-color);
-        }
-
-        .certificate-box:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 0 20px rgba(0, 238, 255, 0.2);
-        }
-
-        .certificate-box i {
-            font-size: 3rem;
-            color: var(--neon-color);
-            margin-bottom: 1rem;
-        }
-
-        .certificate-box h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: white;
-        }
-
-        .certificate-box p {
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        /* Contact Section */
-        .contact {
-            padding: 8% 5%;
-            min-height: 100vh;
-            box-sizing: border-box;
-        }
-
-        .contact-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .contact h2 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            text-align: center;
-            color: white;
-        }
-
-        .contact h3 {
-            font-size: 1.8rem;
-            margin-bottom: 3rem;
-            text-align: center;
-            color: var(--neon-color);
-        }
-
-        .contact-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .contact-text {
-            margin-bottom: 2rem;
-        }
-
-        .contact-text p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .contact-details {
-            margin-top: 1rem;
-        }
-
-        .contact-details p {
-            font-size: 1.1rem;
-            margin-bottom: 0.8rem;
-            color: white;
-            display: flex;
-            align-items: center;
-        }
-
-        .contact-details i {
-            color: var(--neon-color);
-            margin-right: 1rem;
-            font-size: 1.2rem;
-        }
-
-        .contact-form {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 238, 255, 0.1);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: white;
-            font-size: 1.1rem;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.8rem;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 5px;
-            color: white;
-            font-size: 1rem;
-        }
-
-        .form-group textarea {
-            height: 150px;
-            resize: vertical;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--neon-color);
-            box-shadow: 0 0 10px rgba(0, 238, 255, 0.3);
-        }
-
-        /* Responsive fixes */
-        @media (max-width: 1200px) {
-            .header {
-                padding: 1.5rem 3%;
-            }
-            .hero, .about, .skills, .experience, .projects, .certificates, .contact {
-                padding: 10% 3% 0;
-            }
-            .navbar {
-                gap: 0.8rem;
-            }
-            .about-content {
-                gap: 3rem;
-            }
-        }
-
-        @media (max-width: 992px) {
-            .navbar a {
-                font-size: 1rem;
-                padding: 0.3rem;
-            }
-            .about-content {
-                flex-direction: column;
-            }
-            .about-text {
-                order: 2;
-                text-align: center;
-            }
-            .about-img {
-                order: 1;
-                margin-bottom: 3rem;
-            }
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-            .experience-grid {
-                grid-template-columns: 1fr;
-            }
-            .contact-content {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .header {
-                flex-direction: column;
-                padding: 1rem;
-            }
-            .logo {
-                margin-right: 0;
-                margin-bottom: 1rem;
-            }
-            .navbar {
-                justify-content: center;
-                width: 100%;
-                overflow-x: auto;
-                padding-bottom: 5px;
-                -webkit-overflow-scrolling: touch;
-            }
-            .navbar a {
-                padding: 0.5rem;
-            }
-            .hero, .about, .skills, .experience, .projects, .certificates, .contact {
-                flex-direction: column;
-                text-align: center;
-                padding-top: 20%;
-            }
-            .hero-content, .about-text {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-            .hero-content p, .about-text p {
-                width: 100%;
-            }
-            .profile-img {
-                margin-top: 2rem;
-                width: 280px;
-                height: 280px;
-            }
-            .experience-box {
-                padding: 2rem;
-            }
-            .project-header {
-                padding: 1.5rem;
-            }
-            .project-content {
-                padding: 1.5rem;
-            }
-            .certificate-box {
-                padding: 1.5rem;
-            }
-            .contact-form {
-                padding: 1.5rem;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .navbar {
-                gap: 0.5rem;
-            }
-            .navbar a {
-                font-size: 0.9rem;
-            }
-            .about-text h2, .skills h2, .experience h2, .projects h2, .certificates h2, .contact h2 {
-                font-size: 2.5rem;
-            }
-            .about-text h3, .contact h3 {
-                font-size: 1.5rem;
-            }
-            .skill-category {
-                padding: 1.5rem;
-            }
-            .experience-grid {
-                grid-template-columns: 1fr;
-            }
-            .experience-box {
-                padding: 1.5rem;
-            }
-            .project-header h3 {
-                font-size: 1.8rem;
-            }
-            .project-header p {
-                font-size: 1rem;
-            }
-            .project-content h4 {
-                font-size: 1.5rem;
-            }
-            .certificates-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Vicky Kumar | Junior Data Analyst Portfolio</title>
+
+  <meta name="description" content="Vicky Kumar - Junior Data Analyst portfolio showcasing SQL, Python, Excel, Power BI dashboards, internships, certifications, and data analysis projects." />
+  <meta name="keywords" content="Vicky Kumar, Junior Data Analyst, Data Analyst Portfolio, SQL, Python, Excel, Power BI, Dashboard, Data Visualization, GitHub Pages" />
+  <meta name="author" content="Vicky Kumar" />
+
+  <meta property="og:title" content="Vicky Kumar | Junior Data Analyst Portfolio" />
+  <meta property="og:description" content="Portfolio showcasing SQL, Python, Excel, Power BI dashboards, internships, certifications, and data analytics projects." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://itx-vicky714.github.io/" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-color: #071527;
+      --bg-soft: #0A192F;
+      --card-color: rgba(255, 255, 255, 0.055);
+      --card-hover: rgba(255, 255, 255, 0.085);
+      --primary: #00e5ff;
+      --primary-soft: rgba(0, 229, 255, 0.13);
+      --text-main: #ffffff;
+      --text-muted: rgba(255, 255, 255, 0.72);
+      --text-soft: rgba(255, 255, 255, 0.56);
+      --border: rgba(255, 255, 255, 0.11);
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+      --max-width: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at top left, rgba(0, 229, 255, 0.16), transparent 28rem),
+        radial-gradient(circle at bottom right, rgba(0, 229, 255, 0.08), transparent 28rem),
+        var(--bg-color);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .section {
+      padding: 6rem 5%;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-title span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      color: var(--primary);
+      background: var(--primary-soft);
+      border: 1px solid rgba(0, 229, 255, 0.25);
+      padding: 0.45rem 0.85rem;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .section-title h2 {
+      font-size: clamp(2rem, 5vw, 3.15rem);
+      line-height: 1.15;
+      letter-spacing: -0.045em;
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title p {
+      color: var(--text-muted);
+      max-width: 720px;
+      margin: 0 auto;
+      font-size: 1.02rem;
+    }
+
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      width: 100%;
+      padding: 1rem 5%;
+      background: rgba(7, 21, 39, 0.86);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-wrap {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      white-space: nowrap;
+    }
+
+    .logo span {
+      color: var(--primary);
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .navbar a {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: 0.25s ease;
+    }
+
+    .navbar a:hover {
+      color: var(--primary);
+    }
+
+    .nav-cta {
+      color: #05111f !important;
+      background: var(--primary);
+      padding: 0.6rem 1rem;
+      border-radius: 999px;
+      box-shadow: 0 0 16px rgba(0, 229, 255, 0.28);
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 8rem 5% 5rem;
+    }
+
+    .hero-grid {
+      max-width: var(--max-width);
+      width: 100%;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
+      gap: 4rem;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--primary);
+      background: var(--primary-soft);
+      border: 1px solid rgba(0, 229, 255, 0.25);
+      padding: 0.5rem 0.85rem;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      margin-bottom: 1.3rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.7rem, 7vw, 5.7rem);
+      line-height: 0.97;
+      letter-spacing: -0.075em;
+      margin-bottom: 1.1rem;
+    }
+
+    .hero h1 span {
+      color: var(--primary);
+      text-shadow: 0 0 22px rgba(0, 229, 255, 0.28);
+    }
+
+    .hero h2 {
+      font-size: clamp(1.3rem, 3vw, 2rem);
+      line-height: 1.25;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      max-width: 720px;
+      font-size: 1.06rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.7rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      padding: 0.86rem 1.25rem;
+      border-radius: 999px;
+      font-weight: 800;
+      border: 1px solid rgba(0, 229, 255, 0.35);
+      transition: 0.25s ease;
+      cursor: pointer;
+      font-size: 0.98rem;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #04111f;
+      box-shadow: 0 0 20px rgba(0, 229, 255, 0.22);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 30px rgba(0, 229, 255, 0.35);
+    }
+
+    .btn-outline {
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .btn-outline:hover {
+      color: var(--primary);
+      transform: translateY(-3px);
+      background: rgba(0, 229, 255, 0.08);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .social-links a {
+      width: 42px;
+      height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      border: 1px solid rgba(0, 229, 255, 0.35);
+      color: var(--primary);
+      background: rgba(255, 255, 255, 0.035);
+      transition: 0.25s ease;
+    }
+
+    .social-links a:hover {
+      transform: translateY(-4px);
+      background: var(--primary);
+      color: #04111f;
+    }
+
+    .profile-card {
+      position: relative;
+      justify-self: center;
+    }
+
+    .profile-ring {
+      position: absolute;
+      inset: -18px;
+      border-radius: 50%;
+      background: conic-gradient(from 180deg, transparent, var(--primary), transparent 42%);
+      filter: blur(2px);
+      opacity: 0.85;
+      animation: spin 9s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .profile-img {
+      position: relative;
+      width: min(360px, 75vw);
+      height: min(360px, 75vw);
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid rgba(0, 229, 255, 0.85);
+      box-shadow: var(--shadow), 0 0 34px rgba(0, 229, 255, 0.22);
+      background: #0b2038;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-top: 2.4rem;
+    }
+
+    .stat-card,
+    .card {
+      background: var(--card-color);
+      border: 1px solid var(--border);
+      border-radius: 1.2rem;
+      box-shadow: var(--shadow);
+    }
+
+    .stat-card {
+      padding: 1rem;
+    }
+
+    .stat-card strong {
+      display: block;
+      font-size: 1.45rem;
+      color: var(--primary);
+      line-height: 1;
+      margin-bottom: 0.35rem;
+    }
+
+    .stat-card span {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.75fr 1.25fr;
+      gap: 2rem;
+      align-items: stretch;
+    }
+
+    .profile-summary {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .profile-summary h3 {
+      font-size: 1.55rem;
+      margin-bottom: 0.8rem;
+      color: var(--primary);
+    }
+
+    .profile-summary p {
+      color: var(--text-muted);
+      margin-bottom: 1.35rem;
+    }
+
+    .about-card {
+      padding: 2rem;
+    }
+
+    .about-card p {
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .quick-info {
+      display: grid;
+      gap: 0.8rem;
+      margin-top: 1.4rem;
+    }
+
+    .quick-info div {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .quick-info i {
+      color: var(--primary);
+      width: 20px;
+    }
+
+    .education-timeline {
+      display: grid;
+      gap: 1rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .timeline-card {
+      position: relative;
+      padding: 1.5rem 1.5rem 1.5rem 1.6rem;
+      border-left: 4px solid var(--primary);
+    }
+
+    .timeline-card h3 {
+      color: var(--primary);
+      font-size: 1.25rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .timeline-card h4 {
+      font-size: 1.05rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .timeline-card p {
+      color: var(--text-muted);
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-top: 1rem;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.42rem 0.65rem;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      color: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(0, 229, 255, 0.18);
+      font-size: 0.83rem;
+      font-weight: 700;
+    }
+
+    .skills-grid,
+    .experience-grid,
+    .certificates-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.35rem;
+    }
+
+    .skill-card,
+    .experience-card,
+    .certificate-card,
+    .project-card {
+      padding: 1.55rem;
+      transition: 0.25s ease;
+    }
+
+    .skill-card:hover,
+    .experience-card:hover,
+    .certificate-card:hover,
+    .project-card:hover {
+      transform: translateY(-6px);
+      background: var(--card-hover);
+      border-color: rgba(0, 229, 255, 0.26);
+    }
+
+    .skill-card h3,
+    .experience-card h3,
+    .certificate-card h3,
+    .project-card h3 {
+      color: var(--primary);
+      font-size: 1.25rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .skill-list {
+      display: grid;
+      gap: 0.85rem;
+    }
+
+    .skill-list li,
+    .experience-list li,
+    .project-list li {
+      list-style: none;
+      color: var(--text-muted);
+      padding-left: 1.65rem;
+      position: relative;
+    }
+
+    .skill-list li::before,
+    .experience-list li::before,
+    .project-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--primary);
+      font-weight: 900;
+    }
+
+    .experience-card h4 {
+      color: var(--text-main);
+      font-size: 1rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .duration {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      color: var(--text-soft);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .experience-list {
+      display: grid;
+      gap: 0.65rem;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.35rem;
+    }
+
+    .project-card {
+      overflow: hidden;
+      padding: 0;
+    }
+
+    .project-preview {
+      min-height: 190px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      background:
+        linear-gradient(135deg, rgba(0, 229, 255, 0.16), rgba(255,255,255,0.03)),
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.035) 0 1px, transparent 1px 34px);
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem;
+    }
+
+    .project-preview i {
+      font-size: 3.2rem;
+      color: var(--primary);
+      margin-bottom: 0.9rem;
+      filter: drop-shadow(0 0 14px rgba(0, 229, 255, 0.28));
+    }
+
+    .project-preview strong {
+      display: block;
+      font-size: 1.2rem;
+      letter-spacing: -0.02em;
+    }
+
+    .project-body {
+      padding: 1.55rem;
+    }
+
+    .project-body h3 {
+      margin-bottom: 0.45rem;
+    }
+
+    .project-body p {
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .project-list {
+      display: grid;
+      gap: 0.55rem;
+      margin: 1rem 0 1.15rem;
+    }
+
+    .project-actions {
+      display: flex;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+    }
+
+    .mini-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.62rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 800;
+      border: 1px solid rgba(0, 229, 255, 0.28);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text-main);
+      transition: 0.25s ease;
+    }
+
+    .mini-btn:hover {
+      color: var(--primary);
+      transform: translateY(-2px);
+      background: rgba(0, 229, 255, 0.08);
+    }
+
+    .certificate-card {
+      text-align: left;
+    }
+
+    .certificate-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .certificate-icon {
+      min-width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 1rem;
+      background: var(--primary-soft);
+      color: var(--primary);
+      border: 1px solid rgba(0, 229, 255, 0.22);
+      font-size: 1.25rem;
+    }
+
+    .certificate-card p {
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .contact-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.35rem;
+      align-items: stretch;
+    }
+
+    .contact-card {
+      padding: 2rem;
+    }
+
+    .contact-card h3 {
+      color: var(--primary);
+      font-size: 1.45rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .contact-card p {
+      color: var(--text-muted);
+      margin-bottom: 1.2rem;
+    }
+
+    .contact-details {
+      display: grid;
+      gap: 0.75rem;
+      margin: 1.2rem 0;
+    }
+
+    .contact-details a,
+    .contact-details span {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .contact-details i {
+      color: var(--primary);
+      width: 22px;
+    }
+
+    .footer {
+      padding: 2rem 5%;
+      text-align: center;
+      color: var(--text-soft);
+      border-top: 1px solid var(--border);
+      background: rgba(0, 0, 0, 0.12);
+    }
+
+    .replace-note {
+      border: 1px dashed rgba(0, 229, 255, 0.35);
+      background: rgba(0, 229, 255, 0.06);
+      padding: 1rem;
+      border-radius: 1rem;
+      color: var(--text-muted);
+      margin-top: 1rem;
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .about-grid,
+      .contact-box {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .profile-card {
+        order: -1;
+      }
+
+      .hero-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .skills-grid,
+      .experience-grid,
+      .projects-grid,
+      .certificates-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .navbar {
+        gap: 0.72rem;
+      }
+
+      .nav-cta {
+        display: none;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .section {
+        padding: 4.5rem 1.15rem;
+      }
+
+      .hero {
+        padding: 7rem 1.15rem 4rem;
+      }
+
+      .header {
+        padding: 0.85rem 1.15rem;
+      }
+
+      .nav-wrap {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+
+      .navbar {
+        width: 100%;
+        overflow-x: auto;
+        justify-content: flex-start;
+        padding-bottom: 0.25rem;
+      }
+
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .profile-img {
+        width: 260px;
+        height: 260px;
+      }
+
+      .card,
+      .skill-card,
+      .experience-card,
+      .certificate-card,
+      .contact-card,
+      .about-card,
+      .profile-summary,
+      .timeline-card {
+        border-radius: 1rem;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <!-- Header with Navigation -->
-    <header class="header">
-        <a href="#" class="logo">Portfolio.</a>
-        
-        <nav class="navbar">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#experience">Experience</a>
-            <a href="#project">Project</a>
-            <a href="#certificate">Certificate</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
+  <!-- Header -->
+  <header class="header">
+    <div class="nav-wrap">
+      <a href="#home" class="logo">Vicky <span>Kumar</span></a>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h3>Hello, It's Me</h3>
-            <h1>Vicky Kumar</h1>
-            <h3>And I'm a <span style="color: var(--neon-color);">Data Analyst</span></h3>
-            <p>Aspiring Data Analyst with expertise in SQL, Python, Excel, and Power BI. Gained hands-on experience through self-learning, 
-                online courses, and personal projects, focusing on data cleaning, visualization, and basic predictive modeling. Passionate about 
-                using data-driven insights to solve real-world business problems and support strategic decision-making. Actively building a strong 
-                portfolio to showcase analytical and problem-solving abilities. </p>
-            
-            <!-- Social Media Icons -->
-            <div class="social-media">
-                <a href="https://www.facebook.com/share/1GszuEHFka/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://x.com/VickyKu73890294" target="_blank"><i class="fab fa-twitter"></i></a>
-                <a href="https://www.instagram.com/_itx__vicky?igsh=MWs5aXYyaDg3bXdvZA==" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.linkedin.com/in/vickykumar-/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://github.com/itx-vicky714" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://t.me/Itz_kumarv" target="_blank"><i class="fab fa-telegram"></i></a>
-            </div>
-            
-            <a href="#about" class="btn">More About Me</a>
-        </div>
-        
-        <!-- Circular Profile Photo -->
-        <div class="profile">
-            <img src="https://i.imgur.com/9xPLHHD.jpg" alt="Vicky Kumar" class="profile-img">
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="about-content">
-            <div class="about-img">
-                <img src="https://i.imgur.com/9xPLHHD.jpg" alt="Vicky Kumar" class="profile-img">
-            </div>
-            <div class="about-text">
-                <h2>About Me</h2>
-                <h3>Junior Data Analyst!</h3>
-                <p>Hi, I'm Vicky Kumar, an aspiring Data Analyst with a strong foundation in SQL, Python, Excel, and Power BI. I enjoy exploring data and turning it into meaningful insights that can help businesses make better decisions.
-
-                    Currently, I'm pursuing my BCA from LNCT University, Bhopal. I've worked on real-world projects like Swiggy Food Delivery Analysis, Insurance Data Insights, and an IPL Performance Dashboard, where I applied data cleaning, visualization, and storytelling techniques.
-                    
-                    I'm passionate about learning, improving, and staying updated with the latest trends in data analytics. My goal is to contribute to data-driven decision-making in a forward-thinking organization.
-                    
-                    🚀 Let's turn data into decisions!</p>
-                <a href="#skills" class="btn">View Skills</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section class="skills" id="skills">
-        <div class="skills-container">
-            <h2>My Skills</h2>
-            
-            <div class="skills-grid">
-                <!-- Technical Skills -->
-                <div class="skill-category">
-                    <h3>Technical Skills</h3>
-                    
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Python</span>
-                            <span>70%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 90%;"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Power BI</span>
-                            <span>80%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 60%;"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Excel</span>
-                            <span>90%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 85%;"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>SQL</span>
-                            <span>75%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 50%;"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Professional Skills -->
-                <div class="skill-category">
-                    <h3>Professional Skills</h3>
-                    
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Creativity</span>
-                            <span>80%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 80%;"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Community</span>
-                            <span>75%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 75%;"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Teamwork</span>
-                            <span>85%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 85%;"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Problem Solving</span>
-                            <span>80%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 80%;"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Communication</span>
-                            <span>65%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 65%;"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section class="experience" id="experience">
-        <div class="experience-container">
-            <h2>My Experience</h2>
-            
-            <div class="experience-grid">
-                <!-- First Internship -->
-                <div class="experience-box">
-                    <h3>Social Work Intern </h3>
-                    <h4>Rail Bikash Manch (NGO), Bhopal</h4>
-                    <span class="duration">Feburary 202 - March 202</span>
-                    <p>
-                        • Successfully contributed to 4 community projects including environment sustainability, education awareness, and 
-                        donation drives. <br>
-                        • Spearheaded awareness campaigns and outreach efforts to improve social impact within targeted regions.<br>
-                        • Demonstrated strong organizational and teamwork skills during on-ground execution and virtual coordination.<br>
-                        • Earned “Grade A” with appreciation for dedication and consistent performance across all tasks.
-                    </p>
-                </div>
-                
-                <!-- Second Internship -->
-                <div class="experience-box">
-                    <h3>Data Science Intern</h3>
-                    <h4> Cognifyz Technologies, Bhopal</h4>
-                    <span class="duration">October 2024 - November 2024</span>
-                    <p>
-                        • Assisted in data collection, cleaning, and interpretation to support real-world data science projects. <br>
-                        • Demonstrated strong attention to detail and a proactive learning attitude in all assigned tasks. <br>
-                        • Showcased effective communication and coordination skills while working in a virtual team environment.<br>
-                        • Gained hands-on experience in data-driven problem-solving and analytical thinking. 
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <!-- Projects Section -->
-<section class="projects" id="project">
-    <div class="projects-container">
-        <h2>Latest Projects</h2>
-        
-        <div style="display: flex; gap: 2rem; justify-content: space-between; flex-wrap: wrap;">
-            <!-- Techno Sales Dashboard Project - Left Side -->
-            <div class="project-card" style="flex: 1; min-width: 300px;">
-                <div class="project-header">
-                    <h3>DATA ANALYSIS</h3>
-                    <p>Power BI</p>
-                </div>
-                <div class="project-content">
-                    <h4>Techno Sales Dashboard (2020-2022)</h4>
-                    <p>This is a data visualization project where I created an interactive sales dashboard using Power BI. The dashboard showcases key performance metrics such as Total Sales, Profit, Quantity, and Transactions for the years 2020-2022. It provides insights into product categories, brand-wise sales, and state-wise performance using charts, maps, and filters. This project helped me gain hands-on experience with data cleaning, DAX measures, and visual storytelling.</p>
-                    <a href="https://drive.google.com/file/d/1DriGbd3VHA0_LhKRbIROFEoe0_QGScht/view?usp=drive_link" class="btn" target="_blank">View Project</a>
-                </div>
-            </div>
-
-            <!-- Grocery Sales Dashboard Project - Right Side -->
-            <div class="project-card" style="flex: 1; min-width: 300px;">
-                <div class="project-header">
-                    <h3>DATA ANALYSIS</h3>
-                    <p>Power BI</p>
-                </div>
-                <div class="project-content">
-                    <h4>Grocery Sales Dashboard</h4>
-                    <p>This Power BI dashboard analyzes grocery store performance with $1.20M total sales across 8,523 items. It compares sales by fat content (Low Fat vs Regular), outlet types, and establishment years. The interactive visualization helps understand sales patterns across different store tiers and locations, providing actionable insights for inventory and marketing decisions.</p>
-                    <a href="https://drive.google.com/file/d/1Jv0aF3-TeORCvDf38QiBpaWHTNgnBHzj/view?usp=drive_link" class="btn" target="_blank">View Project</a>
-                </div>
-            </div>
-        </div>
+      <nav class="navbar" aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#project">Projects</a>
+        <a href="#certificate">Certificates</a>
+        <a href="#contact" class="nav-cta">Contact</a>
+      </nav>
     </div>
-</section>
+  </header>
 
-    <!-- Certificates Section -->
-    <!-- Certificates Section -->
-<section class="certificates" id="certificate">
-    <div class="certificates-container">
-        <h2>My Certificates</h2>
-        
+  <!-- Hero -->
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="eyebrow"><i class="fa-solid fa-chart-line"></i> Open to Junior Data Analyst Roles</div>
+
+          <h1>Vicky <span>Kumar</span></h1>
+          <h2>Junior Data Analyst | SQL | Python | Excel | Power BI</h2>
+
+          <p>
+            I build interactive dashboards, clean and analyze datasets, and convert raw data into clear business insights.
+            My portfolio includes Power BI dashboard projects, internship experience, and analytics-focused certifications.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#project" class="btn btn-primary"><i class="fa-solid fa-chart-pie"></i> View Projects</a>
+            <!-- Upload your resume PDF in assets folder with this exact name, or replace the path below -->
+            <a href="assets/Vicky-Kumar-Resume.pdf" class="btn btn-outline" target="_blank" rel="noopener">
+              <i class="fa-solid fa-file-arrow-down"></i> Download Resume
+            </a>
+            <a href="mailto:vickykumar03042005@gmail.com" class="btn btn-outline">
+              <i class="fa-solid fa-envelope"></i> Email Me
+            </a>
+          </div>
+
+          <div class="social-links" aria-label="Professional links">
+            <a href="https://www.linkedin.com/in/vickykumar-/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/itx-vicky714" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="mailto:vickykumar03042005@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+            <a href="tel:+918789029434" aria-label="Phone"><i class="fa-solid fa-phone"></i></a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat-card"><strong>2</strong><span>Internships</span></div>
+            <div class="stat-card"><strong>6</strong><span>Certificates</span></div>
+            <div class="stat-card"><strong>2+</strong><span>Dashboards</span></div>
+            <div class="stat-card"><strong>4</strong><span>Core Tools</span></div>
+          </div>
+        </div>
+
+        <div class="profile-card">
+          <div class="profile-ring"></div>
+          <img src="https://i.imgur.com/9xPLHHD.jpg" alt="Vicky Kumar - Junior Data Analyst" class="profile-img">
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-title">
+          <span><i class="fa-solid fa-user"></i> About Me</span>
+          <h2>Data-focused, business-minded, and ready to learn.</h2>
+          <p>
+            A clean professional summary for recruiters, hiring managers, and internship/job opportunities.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="profile-summary card">
+            <div>
+              <h3>Junior Data Analyst</h3>
+              <p>
+                I am currently pursuing BCA from LNCT University, Bhopal, with a strong interest in data analytics,
+                dashboarding, and business problem-solving.
+              </p>
+              <div class="tags">
+                <span class="tag">SQL</span>
+                <span class="tag">Power BI</span>
+                <span class="tag">Excel</span>
+                <span class="tag">Python</span>
+                <span class="tag">Data Visualization</span>
+              </div>
+            </div>
+
+            <div class="replace-note">
+              <strong>Note:</strong> Upload your resume as <strong>assets/Vicky-Kumar-Resume.pdf</strong> so the resume button works perfectly.
+            </div>
+          </div>
+
+          <div class="about-card card">
+            <p>
+              Hi, I’m Vicky Kumar, an aspiring Junior Data Analyst with hands-on practice in SQL, Python, Excel, and Power BI.
+              I enjoy working with datasets, finding patterns, building dashboards, and presenting insights in a simple, useful way.
+            </p>
+            <p>
+              I have worked on analytics projects such as Techno Sales Dashboard and Grocery Sales Dashboard, where I applied data cleaning,
+              KPI creation, visualization, and dashboard storytelling. I have also completed certifications related to Power BI, Excel,
+              data analytics, and career readiness.
+            </p>
+            <p>
+              My goal is to start my career in a growth-focused organization where I can contribute to data-driven decision-making while
+              continuously improving my technical and analytical skills.
+            </p>
+
+            <div class="quick-info">
+              <div><i class="fa-solid fa-location-dot"></i> Bhopal, India</div>
+              <div><i class="fa-solid fa-briefcase"></i> Open to Junior Data Analyst / Data Analyst Intern roles</div>
+              <div><i class="fa-solid fa-graduation-cap"></i> BCA, LNCT University</div>
+              <div><i class="fa-solid fa-envelope"></i> vickykumar03042005@gmail.com</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section class="section" id="education">
+      <div class="container">
+        <div class="section-title">
+          <span><i class="fa-solid fa-graduation-cap"></i> Education</span>
+          <h2>Academic Background</h2>
+          <p>
+            Education section is important for job portfolios because recruiters quickly verify qualification and relevant subjects.
+          </p>
+        </div>
+
+        <div class="education-timeline">
+          <div class="timeline-card card">
+            <h3>Bachelor of Computer Applications (BCA)</h3>
+            <h4>LNCT University, Bhopal</h4>
+            <p><strong>Status:</strong> Currently Pursuing</p>
+            <p><strong>Relevant Subjects:</strong> DBMS, SQL, Python, Statistics, Data Analytics, Excel, Power BI, Business Communication</p>
+            <div class="tags">
+              <span class="tag">Database Management</span>
+              <span class="tag">Programming</span>
+              <span class="tag">Analytics</span>
+              <span class="tag">Visualization</span>
+            </div>
+          </div>
+
+          <!-- Optional: If you want, replace this with your real 12th details -->
+          <div class="timeline-card card">
+            <h3>Senior Secondary Education</h3>
+            <h4>Replace with your School Name</h4>
+            <p><strong>Status:</strong> Add your year, stream, and percentage/CGPA here.</p>
+            <p><strong>Tip:</strong> If you do not want to show 12th details, you can remove this card.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section-title">
+          <span><i class="fa-solid fa-screwdriver-wrench"></i> Skills</span>
+          <h2>Tools and abilities recruiters care about.</h2>
+          <p>
+            I removed percentage bars because exact percentages can look unreliable. This format shows practical ability clearly.
+          </p>
+        </div>
+
+        <div class="skills-grid">
+          <div class="skill-card card">
+            <h3><i class="fa-solid fa-database"></i> SQL</h3>
+            <ul class="skill-list">
+              <li>Data filtering, sorting, grouping, and aggregation</li>
+              <li>Joins, subqueries, basic database analysis</li>
+              <li>Business question solving using structured queries</li>
+            </ul>
+          </div>
+
+          <div class="skill-card card">
+            <h3><i class="fa-solid fa-chart-column"></i> Power BI</h3>
+            <ul class="skill-list">
+              <li>Dashboard design with KPI cards, slicers, charts, and maps</li>
+              <li>DAX basics and calculated measures</li>
+              <li>Business storytelling through interactive visuals</li>
+            </ul>
+          </div>
+
+          <div class="skill-card card">
+            <h3><i class="fa-solid fa-file-excel"></i> Excel</h3>
+            <ul class="skill-list">
+              <li>Data cleaning, sorting, filtering, and formatting</li>
+              <li>Pivot tables, charts, lookup functions, and summaries</li>
+              <li>Basic reporting and spreadsheet-based analysis</li>
+            </ul>
+          </div>
+
+          <div class="skill-card card">
+            <h3><i class="fa-brands fa-python"></i> Python</h3>
+            <ul class="skill-list">
+              <li>Pandas and NumPy basics for data handling</li>
+              <li>Data cleaning and exploratory analysis</li>
+              <li>Basic visualization using Matplotlib</li>
+            </ul>
+          </div>
+
+          <div class="skill-card card">
+            <h3><i class="fa-solid fa-lightbulb"></i> Analytical Skills</h3>
+            <ul class="skill-list">
+              <li>Problem understanding and insight generation</li>
+              <li>KPI identification and dashboard planning</li>
+              <li>Detail-oriented analysis and reporting</li>
+            </ul>
+          </div>
+
+          <div class="skill-card card">
+            <h3><i class="fa-solid fa-people-group"></i> Professional Skills</h3>
+            <ul class="skill-list">
+              <li>Communication, teamwork, and coordination</li>
+              <li>Presentation and data storytelling</li>
+              <li>Learning mindset and project ownership</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section class="section" id="experience">
+      <div class="container">
+        <div class="section-title">
+          <span><i class="fa-solid fa-briefcase"></i> Experience</span>
+          <h2>Internship Experience</h2>
+          <p>
+            Experience is written in a job-focused way so each point connects with communication, data, reporting, or analysis.
+          </p>
+        </div>
+
+        <div class="experience-grid">
+          <div class="experience-card card">
+            <h3>Data Science Intern</h3>
+            <h4>Cognifyz Technologies, Bhopal</h4>
+            <span class="duration"><i class="fa-regular fa-calendar"></i> October 2024 - November 2024</span>
+            <ul class="experience-list">
+              <li>Assisted in data collection, cleaning, and interpretation for data-focused tasks.</li>
+              <li>Practiced analytical thinking by working with datasets and business-style problems.</li>
+              <li>Improved attention to detail while preparing clean and usable information.</li>
+              <li>Coordinated in a virtual team environment with clear communication and task updates.</li>
+            </ul>
+          </div>
+
+          <div class="experience-card card">
+            <h3>Social Work Intern</h3>
+            <h4>Rail Bikash Manch (NGO), Bhopal</h4>
+            <span class="duration"><i class="fa-regular fa-calendar"></i> February 2024 - March 2024</span>
+            <ul class="experience-list">
+              <li>Contributed to community projects including education awareness, sustainability, and donation drives.</li>
+              <li>Organized basic activity records and supported campaign coordination.</li>
+              <li>Worked with teams during on-ground execution and virtual planning.</li>
+              <li>Earned Grade A with appreciation for dedication and consistent performance.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="section" id="project">
+      <div class="container">
+        <div class="section-title">
+          <span><i class="fa-solid fa-chart-pie"></i> Projects</span>
+          <h2>Data Analysis Projects</h2>
+          <p>
+            Project cards are now written like mini case studies: tools, problem, work done, and business value.
+          </p>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project-card card">
+            <div class="project-preview">
+              <div>
+                <i class="fa-solid fa-chart-simple"></i>
+                <strong>Power BI Dashboard</strong>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3>Techno Sales Dashboard (2020-2022)</h3>
+              <p><strong>Tools:</strong> Power BI, Excel, DAX</p>
+              <ul class="project-list">
+                <li>Created an interactive dashboard to analyze sales, profit, quantity, and transactions.</li>
+                <li>Used product category, brand-wise, and state-wise visuals to identify performance patterns.</li>
+                <li>Practiced data cleaning, KPI creation, dashboard layout, and visual storytelling.</li>
+              </ul>
+              <div class="project-actions">
+                <a href="https://drive.google.com/file/d/1DriGbd3VHA0_LhKRbIROFEoe0_QGScht/view?usp=drive_link" class="mini-btn" target="_blank" rel="noopener">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> View Dashboard
+                </a>
+                <a href="https://github.com/itx-vicky714" class="mini-btn" target="_blank" rel="noopener">
+                  <i class="fab fa-github"></i> GitHub
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card card">
+            <div class="project-preview">
+              <div>
+                <i class="fa-solid fa-store"></i>
+                <strong>Sales Insights</strong>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3>Grocery Sales Dashboard</h3>
+              <p><strong>Tools:</strong> Power BI, Excel, Data Visualization</p>
+              <ul class="project-list">
+                <li>Analyzed $1.20M total sales across 8,523 items using an interactive Power BI dashboard.</li>
+                <li>Compared sales by fat content, outlet type, establishment year, tier, and location.</li>
+                <li>Built clear visuals to support inventory, outlet, and marketing decision-making.</li>
+              </ul>
+              <div class="project-actions">
+                <a href="https://drive.google.com/file/d/1Jv0aF3-TeORCvDf38QiBpaWHTNgnBHzj/view?usp=drive_link" class="mini-btn" target="_blank" rel="noopener">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> View Dashboard
+                </a>
+                <a href="https://github.com/itx-vicky714" class="mini-btn" target="_blank" rel="noopener">
+                  <i class="fab fa-github"></i> GitHub
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card card">
+            <div class="project-preview">
+              <div>
+                <i class="fa-solid fa-utensils"></i>
+                <strong>Analysis Project</strong>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3>Swiggy Food Delivery Analysis</h3>
+              <p><strong>Tools:</strong> Replace with actual tools used</p>
+              <ul class="project-list">
+                <li>Analyzed food delivery data to understand order patterns, categories, and performance.</li>
+                <li>Applied data cleaning and visualization techniques to identify useful insights.</li>
+                <li>Replace this project card with exact dataset, KPIs, screenshots, and project link.</li>
+              </ul>
+              <div class="project-actions">
+                <a href="#" class="mini-btn"><i class="fa-solid fa-link"></i> Add Project Link</a>
+                <a href="https://github.com/itx-vicky714" class="mini-btn" target="_blank" rel="noopener">
+                  <i class="fab fa-github"></i> GitHub
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card card">
+            <div class="project-preview">
+              <div>
+                <i class="fa-solid fa-baseball-bat-ball"></i>
+                <strong>Performance Dashboard</strong>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3>IPL Performance Dashboard</h3>
+              <p><strong>Tools:</strong> Replace with actual tools used</p>
+              <ul class="project-list">
+                <li>Created a dashboard concept to analyze player/team performance and match-level insights.</li>
+                <li>Focused on visual storytelling using performance metrics and comparisons.</li>
+                <li>Replace this card with exact KPIs, screenshots, GitHub link, and dashboard URL.</li>
+              </ul>
+              <div class="project-actions">
+                <a href="#" class="mini-btn"><i class="fa-solid fa-link"></i> Add Project Link</a>
+                <a href="https://github.com/itx-vicky714" class="mini-btn" target="_blank" rel="noopener">
+                  <i class="fab fa-github"></i> GitHub
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="replace-note">
+          <strong>For true 10/10:</strong> Replace the placeholder project links with actual GitHub repos and add dashboard screenshots inside each project card.
+        </div>
+      </div>
+    </section>
+
+    <!-- Certificates -->
+    <section class="section" id="certificate">
+      <div class="container">
+        <div class="section-title">
+          <span><i class="fa-solid fa-certificate"></i> Certificates</span>
+          <h2>Certifications & Learning Proof</h2>
+          <p>
+            Certificates are ordered by relevance for Data Analyst roles.
+          </p>
+        </div>
+
         <div class="certificates-grid">
-            <!-- Certificate 1 -->
-            <div class="certificate-box">
-                <i class="fas fa-certificate"></i>
-                <h3>Data Analytics & Visualization</h3>
-                <p>Forage | Completed: March 2025</p>
-                <a href="https://drive.google.com/file/d/1UtEyMHqTzPlHMWbX6Sb7kTqA5mV9VmkM/view?usp=drive_link" class="btn-small" target="_blank">View Certificate</a>
-            </div>
-            
-            <!-- Certificate 2 -->
-            <div class="certificate-box">
-                <i class="fas fa-certificate"></i>
-                <h3>Microsoft Excel for Data Analyst</h3>
-                <p>Infosys | Completed: August 2024</p>
-                <a href="https://drive.google.com/file/d/13JvxpuChuG0_g_nI9mKAUo6cpaaWXZmn/view?usp=drive_link" class="btn-small" target="_blank">View Certificate</a>
-            </div>
-            
-            <!-- Certificate 3 -->
-            <div class="certificate-box">
-                <i class="fas fa-certificate"></i>
+          <div class="certificate-card card">
+            <div class="certificate-top">
+              <div class="certificate-icon"><i class="fa-solid fa-chart-column"></i></div>
+              <div>
                 <h3>Power BI Job Simulation</h3>
                 <p>PwC | Completed: August 2024</p>
-                <a href="https://drive.google.com/file/d/1RSVIK9Os-btdzOCJG6i0pLZiZoS6dPUU/view?usp=drive_link" class="btn-small" target="_blank">View Certificate</a>
+              </div>
             </div>
-            
-            <!-- Certificate 4 -->
-            <div class="certificate-box">
-                <i class="fas fa-certificate"></i>
-                <h3>Social Work Internship</h3>
-                <p>Rail Bikash Manch | Feb-Mar 2024</p>
-                <a href="https://drive.google.com/file/d/19aMzGc1sOeBpXLCCbSmwdr9FQoYGn5Hi/view?usp=drive_link" class="btn-small" target="_blank">View Certificate</a>
+            <a href="https://drive.google.com/file/d/1RSVIK9Os-btdzOCJG6i0pLZiZoS6dPUU/view?usp=drive_link" class="mini-btn" target="_blank" rel="noopener">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> View Certificate
+            </a>
+          </div>
+
+          <div class="certificate-card card">
+            <div class="certificate-top">
+              <div class="certificate-icon"><i class="fa-solid fa-chart-line"></i></div>
+              <div>
+                <h3>Data Analytics & Visualization</h3>
+                <p>Forage | Completed: March 2025</p>
+              </div>
             </div>
-            
-            <!-- Certificate 5 -->
-            <div class="certificate-box">
-                <i class="fas fa-certificate"></i>
+            <a href="https://drive.google.com/file/d/1UtEyMHqTzPlHMWbX6Sb7kTqA5mV9VmkM/view?usp=drive_link" class="mini-btn" target="_blank" rel="noopener">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> View Certificate
+            </a>
+          </div>
+
+          <div class="certificate-card card">
+            <div class="certificate-top">
+              <div class="certificate-icon"><i class="fa-solid fa-file-excel"></i></div>
+              <div>
+                <h3>Microsoft Excel for Data Analyst</h3>
+                <p>Infosys | Completed: August 2024</p>
+              </div>
+            </div>
+            <a href="https://drive.google.com/file/d/13JvxpuChuG0_g_nI9mKAUo6cpaaWXZmn/view?usp=drive_link" class="mini-btn" target="_blank" rel="noopener">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> View Certificate
+            </a>
+          </div>
+
+          <div class="certificate-card card">
+            <div class="certificate-top">
+              <div class="certificate-icon"><i class="fa-solid fa-laptop-code"></i></div>
+              <div>
                 <h3>Data Science Internship</h3>
                 <p>Cognifyz Technologies | Oct-Nov 2024</p>
-                <a href="https://drive.google.com/file/d/1nZbxTm2liUzlTTUAD0XE6IzCFHKjzRmx/view?usp=drive_link" class="btn-small" target="_blank">View Certificate</a>
+              </div>
             </div>
-            
-            <!-- Certificate 6 -->
-            <div class="certificate-box">
-                <i class="fas fa-certificate"></i>
+            <a href="https://drive.google.com/file/d/1nZbxTm2liUzlTTUAD0XE6IzCFHKjzRmx/view?usp=drive_link" class="mini-btn" target="_blank" rel="noopener">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> View Certificate
+            </a>
+          </div>
+
+          <div class="certificate-card card">
+            <div class="certificate-top">
+              <div class="certificate-icon"><i class="fa-solid fa-briefcase"></i></div>
+              <div>
                 <h3>TCS iON Career Edge</h3>
                 <p>Tata Consultancy Services | Mar-Apr 2025</p>
-                <a href="https://drive.google.com/file/d/1s2zQlOHBfNSdDmhJB7PY1Rfc5wRFcgkA/view?usp=drive_link" class="btn-small" target="_blank">View Certificate</a>
+              </div>
             </div>
-        </div>
-    </div>
-</section>
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="contact-container">
-            <h2>Contact Me</h2>
-            <h3>Let's Work Together</h3>
-            
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-text">
-                        <p>I'm always open to discussing data analysis projects, collaboration opportunities, or just connecting over shared interests. Feel free to reach out!</p>
-                    </div>
-                    
-                    <div class="contact-details">
-                        <p><i class="fas fa-envelope"></i> vickykumar03042005@gmail.com</p>
-                        <p><i class="fas fa-phone"></i>+91 8789029434</p>
-                    </div>
-                </div>
-                
-                <div class="contact-form">
-                    <form>
-                        <div class="form-group">
-                            <label for="name">Enter Your Name</label>
-                            <input type="text" id="name" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Enter Your Email</label>
-                            <input type="email" id="email" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="subject">Enter Your Subject</label>
-                            <input type="text" id="subject" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Enter Your Message</label>
-                            <textarea id="message" required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn">Submit</button>
-                    </form>
-                </div>
+            <a href="https://drive.google.com/file/d/1s2zQlOHBfNSdDmhJB7PY1Rfc5wRFcgkA/view?usp=drive_link" class="mini-btn" target="_blank" rel="noopener">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> View Certificate
+            </a>
+          </div>
+
+          <div class="certificate-card card">
+            <div class="certificate-top">
+              <div class="certificate-icon"><i class="fa-solid fa-handshake-angle"></i></div>
+              <div>
+                <h3>Social Work Internship</h3>
+                <p>Rail Bikash Manch | Feb-Mar 2024</p>
+              </div>
             </div>
+            <a href="https://drive.google.com/file/d/19aMzGc1sOeBpXLCCbSmwdr9FQoYGn5Hi/view?usp=drive_link" class="mini-btn" target="_blank" rel="noopener">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> View Certificate
+            </a>
+          </div>
         </div>
+      </div>
     </section>
+
+    <!-- Contact -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-title">
+          <span><i class="fa-solid fa-paper-plane"></i> Contact</span>
+          <h2>Let’s connect for opportunities.</h2>
+          <p>
+            Direct contact buttons are better than a non-working form. Recruiters can reach you in one click.
+          </p>
+        </div>
+
+        <div class="contact-box">
+          <div class="contact-card card">
+            <h3>Contact Details</h3>
+            <p>
+              I am open to Junior Data Analyst, Data Analyst Intern, and entry-level analytics opportunities.
+            </p>
+
+            <div class="contact-details">
+              <a href="mailto:vickykumar03042005@gmail.com"><i class="fa-solid fa-envelope"></i> vickykumar03042005@gmail.com</a>
+              <a href="tel:+918789029434"><i class="fa-solid fa-phone"></i> +91 8789029434</a>
+              <a href="https://www.linkedin.com/in/vickykumar-/" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> LinkedIn Profile</a>
+              <a href="https://github.com/itx-vicky714" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub Profile</a>
+            </div>
+          </div>
+
+          <div class="contact-card card">
+            <h3>Recruiter Quick Actions</h3>
+            <p>
+              Use these links to quickly review my projects, resume, GitHub, and LinkedIn profile.
+            </p>
+
+            <div class="hero-actions">
+              <a href="assets/Vicky-Kumar-Resume.pdf" class="btn btn-primary" target="_blank" rel="noopener">
+                <i class="fa-solid fa-file-arrow-down"></i> Download Resume
+              </a>
+              <a href="#project" class="btn btn-outline"><i class="fa-solid fa-chart-pie"></i> View Projects</a>
+              <a href="mailto:vickykumar03042005@gmail.com" class="btn btn-outline"><i class="fa-solid fa-envelope"></i> Email Me</a>
+            </div>
+
+            <div class="replace-note">
+              Replace resume path only if your PDF has a different file name.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 Vicky Kumar. Built for Data Analyst opportunities.</p>
+  </footer>
 </body>
 </html>
