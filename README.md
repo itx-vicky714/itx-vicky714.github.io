@@ -18,7 +18,7 @@ https://itx-vicky714.github.io/
 ## Assets
 - assets/profile.jpg
 - assets/project-bg.png
-- assets/Vicky-Kumar-Resume.docx
+- assets/Vicky-Kumar-Resume.pdf
 
 ## Skills Highlighted
 SQL, Python, Power BI, Excel, EDA, BI Reporting, Marketing Analytics, SEO, Digital Marketing.
